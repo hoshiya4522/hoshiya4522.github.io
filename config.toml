@@ -23,7 +23,7 @@ paginate = 5
   fullWidthTheme = false
 
   # center theme with default width
-  centerTheme = false
+  centerTheme = true
 
   # if your resource directory contains an image called `cover.(jpg|png|webp)`,
   # then the file will be used as a cover automatically.
@@ -65,9 +65,9 @@ paginate = 5
 [languages]
   [languages.en]
     languageName = "English"
-    title = "Terminal"
-    subtitle = "A simple, retro theme for Hugo"
-    owner = ""
+    title = "hoshiya4522's blog"
+    subtitle = "hoshiya4522's blog made with hugo"
+    owner = "hoshiya4522"
     keywords = ""
     copyright = ""
     menuMore = "Show more"
