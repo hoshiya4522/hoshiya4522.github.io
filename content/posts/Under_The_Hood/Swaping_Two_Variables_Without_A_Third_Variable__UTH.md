@@ -3,7 +3,7 @@ title = "Under The Hood: Swaping Two Variables Without A Third Variable"
 date = "2023-04-10T15:16:13+06:00"
 author = "Gourob Dev"
 authorTwitter = "" #do not include @
-cover = ""
+cover = "/UTH.jpg"
 tags = ["Interesting Piece Of Code", "Beautiful Snippets", "Python", "C", "Beauty of Code", "Under the hood"]
 keywords = ["", ""]
 description = "Swapping the value of two variables without assigning a temporary third variable is a very simple task that we do pretty often. I used to do it without really understanding what's really happening under the hood..."
@@ -13,7 +13,7 @@ hideComments = false
 color = "" #color from the theme settings
 +++
 
-Today when I was doom scrolling on YouTube I came accross [this](https://www.youtube.com/watch?v=Nusg5dUjR0A) video by The Primagen talking about the biggest takes on programming. There was a part where writing a program about swapping the values of two variables without a temporary variable was mentioned. I thought how it was done in C. After a quick googling I came accross [this article](https://www.javatpoint.com/c-program-to-swap-two-numbers-without-using-third-variable) and the code was kinda interesting.
+Today when I was doom scrolling on YouTube I came accross [this video by The Primagen](https://www.youtube.com/watch?v=Nusg5dUjR0A) talking about the biggest takes on programming. There was a part where writing a program about swapping the values of two variables without a temporary variable was mentioned. I thought how it was done in C. After a quick googling I came accross [an article from Java Point](https://www.javatpoint.com/c-program-to-swap-two-numbers-without-using-third-variable) and the code was kinda interesting.
 
 I'm currently learning and using C because of school. But before that I used Python for most of my projects.
 In python to swap the value of two variables without a third variable I use the following snippet.
@@ -111,10 +111,10 @@ XOR(exclusive or) is a bitwise operator that takes to binary bits and compares t
 
 | A | B | A XOR B |
 |---|---|---------|
-| 0 | 0 |    0    |
-|1|0|1|
-|0|1|1|
-|1|1|0|
+|0  |0  |0        |
+|1  |0  |1        |
+|0  |1  |1        |
+|1  |1  |0        |
 
 Suppose we have two variables x and y. Where x is assigned with the number 2 and why is assigned with the number 5.
 
@@ -230,3 +230,9 @@ As Richard Fynman once said,
 > *"If you want to master something, teach it.
 The more you teach, the better you learn.
 Teaching is a powerful tool to learning."*
+
+
+***Resources:***
+- [Java Point - C Program to swap two numbers without third variable](https://www.javatpoint.com/c-program-to-swap-two-numbers-without-using-third-variable)
+- [Telusko - Swap 2 Variables in Python](https://www.youtube.com/watch?v=3dpJrMtxYeo)
+- [Real Python - Tuple Assignment, Packing, and Unpacking](https://realpython.com/lessons/tuple-assignment-packing-unpacking/#description)
