@@ -1,12 +1,12 @@
 +++
-title = "A Simple But Interesting Piece Of Code: Swaping Two Variables"
+title = "Under The Hood: Swaping Two Variables Without A Third Variable"
 date = "2023-04-10T15:16:13+06:00"
 author = "Gourob Dev"
 authorTwitter = "" #do not include @
 cover = ""
-tags = ["Interesting Piece Of Code", "C", "Python"]
+tags = ["Interesting Piece Of Code", "Beautiful Snippets", "Python", "C", "Beauty of Code", "Under the hood"]
 keywords = ["", ""]
-description = ""
+description = "Swapping the value of two variables without assigning a temporary third variable is a very simple task that we do pretty often. I used to do it without really understanding what's really happening under the hood..."
 showFullContent = false
 readingTime = false
 hideComments = false
@@ -68,6 +68,28 @@ We will be discussing three methods on how we can swap the contents of two varia
 
 ### The Arithmetic Method
 Suppose we have two variables x and y. Where x is assigned with the number 2 and why is assigned with the number 5.
+
+Now if we add x and y we will get 7 (`5 + 2 = 7`) and then assign it to x.
+```c
+x = x + y   // x=7
+```
+
+Now if we subtract y from x we will get the previous value of x (`7 - 2 = 5`). Now by assigning it to y the previous value of x will now be assigned to y.
+
+```c
+x = x + y   // x=7
+y = x - y   // y=2
+```
+
+Finally, by subtracting the new value of y from the new value of x we will get the original value of x (`7 - 5 = 2`) and by assigning it to the variable y the swapping process will be completed.
+
+```c
+x = x + y   // x=7
+y = x - y   // y=2
+x = x - y   // x=5
+```
+<br>
+To sum it up the c implementation of the arithmetic method will be:
 
 ```c
 #include <stdio.h>
@@ -170,3 +192,41 @@ int main(){
     return 0;
 }
 ```
+
+### Comparing both methods
+Both of these methods are very beautiful!
+
+Although the arithmetic method is more readable and easier to understand it is actually slower.
+
+In the Arithmetic Method three arithmetic operations are done to finish the process.
+
+```c
+x = x + y
+y = x - y
+x = x - y
+```
+
+On the other hand, in the XOR method three bitwise operations are done to finish the process.
+
+```c
+x = x ^ y
+y = x ^ y
+x = x ^ y
+```
+
+Bitwise operations work on the binary form of the values thus the operation is done at a lower level than an arithmetic operations.
+
+That is the reason the XOR method is faster and more efficient than the Arithmetic method.
+
+## Some Thoughts
+Swapping the value of two variables without assigning a temporary third variable is a very simple task that we do pretty often. I used to do it without really understanding what's really happening under the hood.
+
+I'm a 17 y/o boy who thought that he knew python pretty well but after doing the research for this blog post now I know that my current knowledge is basically at the surface level. But I can say that I have more knowledge than I had yesterday.
+
+The reason for me making a blog is to learn more about stuff I already kind of know it or want to master it. Because, I try not to post something that is wrong or false.
+
+As Richard Fynman once said,
+
+> *"If you want to master something, teach it.
+The more you teach, the better you learn.
+Teaching is a powerful tool to learning."*
