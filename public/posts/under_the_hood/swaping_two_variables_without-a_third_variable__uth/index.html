@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Under The Hood: Swaping Two Variables Without A Third Variable :: hoshiya4522&#39;s blog</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Swapping the value of two variables without assigning a temporary third variable is a very simple task that we do pretty often. I used to do it without really understanding what&#39;s really happening under the hood..." />
+<meta name="keywords" content=", " />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="/posts/under_the_hood/swaping_two_variables_without-a_third_variable__uth/" />
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/styles.css">
+
+
+
+<link rel="stylesheet" href="/style.css">
+
+
+
+  <link rel="shortcut icon" href="/img/theme-colors/orange.png">
+  <link rel="apple-touch-icon" href="/img/theme-colors/orange.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Under The Hood: Swaping Two Variables Without A Third Variable">
+<meta property="og:description" content="Swapping the value of two variables without assigning a temporary third variable is a very simple task that we do pretty often. I used to do it without really understanding what&#39;s really happening under the hood..." />
+<meta property="og:url" content="/posts/under_the_hood/swaping_two_variables_without-a_third_variable__uth/" />
+<meta property="og:site_name" content="hoshiya4522&#39;s blog" />
+
+  
+  
+  <meta property="og:image" content="/">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2023-04-10 15:16:13 &#43;0600 &#43;06" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="orange">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    hoshiya4522
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="https://github.com/hoshiya4522">Github</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="https://github.com/hoshiya4522">Github</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="/posts/under_the_hood/swaping_two_variables_without-a_third_variable__uth/">Under The Hood: Swaping Two Variables Without A Third Variable</a>
+  </h1>
+  <div class="post-meta">
+    
+      <time class="post-date">
+        2023-04-10 ::
+        
+      </time>
+    
+    
+      <span class="post-author">Gourob Dev</span>
+    
+    
+  </div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="/tags/interesting-piece-of-code/">Interesting Piece Of Code</a>&nbsp;
+      
+      #<a href="/tags/beautiful-snippets/">Beautiful Snippets</a>&nbsp;
+      
+      #<a href="/tags/python/">Python</a>&nbsp;
+      
+      #<a href="/tags/c/">C</a>&nbsp;
+      
+      #<a href="/tags/beauty-of-code/">Beauty of Code</a>&nbsp;
+      
+      #<a href="/tags/under-the-hood/">Under the hood</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <p>Today when I was doom scrolling on YouTube I came accross <a href="https://www.youtube.com/watch?v=Nusg5dUjR0A">this</a> video by The Primagen talking about the biggest takes on programming. There was a part where writing a program about swapping the values of two variables without a temporary variable was mentioned. I thought how it was done in C. After a quick googling I came accross <a href="https://www.javatpoint.com/c-program-to-swap-two-numbers-without-using-third-variable">this article</a> and the code was kinda interesting.</p>
+<p>I&rsquo;m currently learning and using C because of school. But before that I used Python for most of my projects.
+In python to swap the value of two variables without a third variable I use the following snippet.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+y <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+
+x, y <span style="color:#f92672">=</span> y, x
+
+print(x) <span style="color:#75715e"># 5</span>
+print(y) <span style="color:#75715e"># 3</span>
+</code></pre></div><p>I used the exact statement <code>x, y = y, x;</code> in C but after compilation when I ran the code the output wasn&rsquo;t the same. The content of the variables didn&rsquo;t swap! But why?</p>
+<h2 id="tuple-unpacking-in-python">Tuple Unpacking in Python<a href="#tuple-unpacking-in-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>To assign multiple values into a single variable in Python we can use Lists, Dictionaries or Tuples.
+But the values which are stored in a tuple are unchangeable.</p>
+<p>Tuples are assigned like this.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">t <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+</code></pre></div><p>By using the feature implemented in Python called tuple unpacking we can assign multiple variables buy splitting a tuple.</p>
+<p>For example, suppose we have a tuple of two numbers. Now we will assign the first number to the variable x and the second number to the variable y.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x, y <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>)
+</code></pre></div><p>Here the tuple <code>(1, 2)</code> is split in half and then one is a signed to x and 2 is assigned to y. normally to do this we would write two lines of code. But by using this feature we can do all that in a single line of code.</p>
+<p>A tuple can also contain variables.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">var1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+var2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>
+
+t <span style="color:#f92672">=</span> (var1, var2)
+
+print(t)  <span style="color:#75715e"># (6, 9)</span>
+</code></pre></div><p>Here Python first gets the actual value of the variables var1 and var2 and then assigning to the variable t.</p>
+<p>So in the snippet <code>x, y = y, x</code> Python is first getting the value of <code>y, x</code> and then using tuple unpacking it assigns the value of x and y.
+the process is indeed very beautiful.</p>
+<p>But, the feature doesn&rsquo;t exist in C. That is why it doesn&rsquo;t work there.</p>
+<h2 id="swapping-the-contents-of-two-variables-in-c">Swapping The Contents of Two Variables in C<a href="#swapping-the-contents-of-two-variables-in-c" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>We will be discussing three methods on how we can swap the contents of two variables without assigning a temporary third variable in C.</p>
+<h3 id="the-arithmetic-method">The Arithmetic Method<a href="#the-arithmetic-method" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Suppose we have two variables x and y. Where x is assigned with the number 2 and why is assigned with the number 5.</p>
+<p>Now if we add x and y we will get 7 (<code>5 + 2 = 7</code>) and then assign it to x.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> y   <span style="color:#75715e">// x=7
+</span></code></pre></div><p>Now if we subtract y from x we will get the previous value of x (<code>7 - 2 = 5</code>). Now by assigning it to y the previous value of x will now be assigned to y.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> y   <span style="color:#75715e">// x=7
+</span><span style="color:#75715e"></span>y <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> y   <span style="color:#75715e">// y=2
+</span></code></pre></div><p>Finally, by subtracting the new value of y from the new value of x we will get the original value of x (<code>7 - 5 = 2</code>) and by assigning it to the variable y the swapping process will be completed.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> y   <span style="color:#75715e">// x=7
+</span><span style="color:#75715e"></span>y <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> y   <span style="color:#75715e">// y=2
+</span><span style="color:#75715e"></span>x <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> y   <span style="color:#75715e">// x=5
+</span></code></pre></div><!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+    <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+    <span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+
+    x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> y   <span style="color:#75715e">// x=7
+</span><span style="color:#75715e"></span>    y <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> y   <span style="color:#75715e">// y=2
+</span><span style="color:#75715e"></span>    x <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> y   <span style="color:#75715e">// x=5
+</span><span style="color:#75715e"></span>    
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h3 id="the-xor-method">The XOR(<code>^</code>) Method<a href="#the-xor-method" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>XOR(exclusive or) is a bitwise operator that takes to binary bits and compares them. If the two bits match then it returns 0. but if the bits are different IT returns 1.</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>A XOR B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Suppose we have two variables x and y. Where x is assigned with the number 2 and why is assigned with the number 5.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+<span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</code></pre></div><p>Here 2 and 5 are decimal numbers.
+The binary form of 2 is <code>00000010</code> and 5 in binary form is <code>00000101</code>.
+If we do the XOR operation on the variable x and y the result will be <code>00000111</code> or 7 in decimal.</p>
+<pre tabindex="0"><code>Explanation:
+
+    00000010     (x)
+(^) 00000101     (y)
+--------------
+    00000111
+
+</code></pre><p>Now if we assign the value of x XOR y to x then x&rsquo;s new value will be 7.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">x <span style="color:#f92672">=</span> x <span style="color:#f92672">^</span> y   <span style="color:#75715e">// x = 7
+</span></code></pre></div><p>Then if we do the XOR operation between y and the new value of x and store it into y then the number which was previously assigned to x will now be assigned to y.</p>
+<pre tabindex="0"><code>Explanation:
+
+    00000111     (new x)
+(^) 00000101     (y)
+--------------
+    00000010     (Previous value of x)
+
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">x <span style="color:#f92672">=</span> x <span style="color:#f92672">^</span> y   <span style="color:#75715e">// x=7
+</span><span style="color:#75715e"></span>y <span style="color:#f92672">=</span> x <span style="color:#f92672">^</span> y   <span style="color:#75715e">// y=2
+</span></code></pre></div><p>Finally if we do the XOR operation again between the new values of both x and y and then assigning the result to x. The old value of y will now be assigned to x and thus the swapping operation will be completed.</p>
+<pre tabindex="0"><code>Explanation:
+
+    00000111     (new x)
+(^) 00000010     (new y)
+--------------
+    00000101     (Previous value of y)
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">x <span style="color:#f92672">=</span> x <span style="color:#f92672">^</span> y   <span style="color:#75715e">// x=7
+</span><span style="color:#75715e"></span>y <span style="color:#f92672">=</span> x <span style="color:#f92672">^</span> y   <span style="color:#75715e">// y=2
+</span><span style="color:#75715e"></span>x <span style="color:#f92672">=</span> x <span style="color:#f92672">^</span> y   <span style="color:#75715e">// x=5
+</span></code></pre></div><!-- raw HTML omitted -->
+<p>To sum it up the c implementation of the XOR method will be:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+    <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+    <span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+
+    x <span style="color:#f92672">=</span> x <span style="color:#f92672">^</span> y   <span style="color:#75715e">// x=7
+</span><span style="color:#75715e"></span>    y <span style="color:#f92672">=</span> x <span style="color:#f92672">^</span> y   <span style="color:#75715e">// y=2
+</span><span style="color:#75715e"></span>    x <span style="color:#f92672">=</span> x <span style="color:#f92672">^</span> y   <span style="color:#75715e">// x=5
+</span><span style="color:#75715e"></span>    
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h3 id="comparing-both-methods">Comparing both methods<a href="#comparing-both-methods" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Both of these methods are very beautiful!</p>
+<p>Although the arithmetic method is more readable and easier to understand it is actually slower.</p>
+<p>In the Arithmetic Method three arithmetic operations are done to finish the process.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> y
+y <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> y
+x <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> y
+</code></pre></div><p>On the other hand, in the XOR method three bitwise operations are done to finish the process.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">x <span style="color:#f92672">=</span> x <span style="color:#f92672">^</span> y
+y <span style="color:#f92672">=</span> x <span style="color:#f92672">^</span> y
+x <span style="color:#f92672">=</span> x <span style="color:#f92672">^</span> y
+</code></pre></div><p>Bitwise operations work on the binary form of the values thus the operation is done at a lower level than an arithmetic operations.</p>
+<p>That is the reason the XOR method is faster and more efficient than the Arithmetic method.</p>
+<h2 id="some-thoughts">Some Thoughts<a href="#some-thoughts" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Swapping the value of two variables without assigning a temporary third variable is a very simple task that we do pretty often. I used to do it without really understanding what&rsquo;s really happening under the hood.</p>
+<p>I&rsquo;m a 17 y/o boy who thought that he knew python pretty well but after doing the research for this blog post now I know that my current knowledge is basically at the surface level. But I can say that I have more knowledge than I had yesterday.</p>
+<p>The reason for me making a blog is to learn more about stuff I already kind of know it or want to master it. Because, I try not to post something that is wrong or false.</p>
+<p>As Richard Fynman once said,</p>
+<blockquote>
+<p><em>&ldquo;If you want to master something, teach it.
+The more you teach, the better you learn.
+Teaching is a powerful tool to learning.&quot;</em></p>
+</blockquote>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        
+        <span class="button next">
+            <a href="/posts/first-post__enjoy_5_paragraphs_of_sagan_ipsum_with_a_meme/">
+                <span class="button__text">First Post: Enjoy 5 Paragraphs of Sagan Ipsum</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2023 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

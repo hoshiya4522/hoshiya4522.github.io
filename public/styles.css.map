@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "styles.css",
-	"sourceRoot": "/home/hoshiya4522/Documents/hugo/new-site",
+	"sourceRoot": "/home/hoshiya4522/Documents/hugo/hoshiya4522.github.io",
 	"sources": [
 		"css/base.scss",
 		"themes/terminal/assets/css/variables.scss",

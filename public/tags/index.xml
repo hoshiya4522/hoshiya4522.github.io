@@ -1,12 +1,102 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Terminal</title>
+    <title>Tags on hoshiya4522&#39;s blog</title>
     <link>/tags/</link>
-    <description>Recent content in Tags on Terminal</description>
+    <description>Recent content in Tags on hoshiya4522&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Apr 2023 00:35:55 +0600</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Apr 2023 15:16:13 +0600</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Beautiful Snippets</title>
+      <link>/tags/beautiful-snippets/</link>
+      <pubDate>Mon, 10 Apr 2023 15:16:13 +0600</pubDate>
+      
+      <guid>/tags/beautiful-snippets/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Beauty of Code</title>
+      <link>/tags/beauty-of-code/</link>
+      <pubDate>Mon, 10 Apr 2023 15:16:13 +0600</pubDate>
+      
+      <guid>/tags/beauty-of-code/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>C</title>
+      <link>/tags/c/</link>
+      <pubDate>Mon, 10 Apr 2023 15:16:13 +0600</pubDate>
+      
+      <guid>/tags/c/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Interesting Piece Of Code</title>
+      <link>/tags/interesting-piece-of-code/</link>
+      <pubDate>Mon, 10 Apr 2023 15:16:13 +0600</pubDate>
+      
+      <guid>/tags/interesting-piece-of-code/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/tags/python/</link>
+      <pubDate>Mon, 10 Apr 2023 15:16:13 +0600</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Under the hood</title>
+      <link>/tags/under-the-hood/</link>
+      <pubDate>Mon, 10 Apr 2023 15:16:13 +0600</pubDate>
+      
+      <guid>/tags/under-the-hood/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>meme</title>
+      <link>/tags/meme/</link>
+      <pubDate>Mon, 10 Apr 2023 01:36:50 +0600</pubDate>
+      
+      <guid>/tags/meme/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>SaganIpsum</title>
+      <link>/tags/saganipsum/</link>
+      <pubDate>Mon, 10 Apr 2023 01:36:50 +0600</pubDate>
+      
+      <guid>/tags/saganipsum/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>test</title>
+      <link>/tags/test/</link>
+      <pubDate>Mon, 10 Apr 2023 01:36:50 +0600</pubDate>
+      
+      <guid>/tags/test/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
     <item>
       <title>about</title>
       <link>/tags/about/</link>

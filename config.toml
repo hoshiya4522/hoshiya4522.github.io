@@ -86,11 +86,26 @@ paginate = 5
 
     [languages.en.menu]
       [[languages.en.menu.main]]
+        identifier = "home"
+        name = "Home"
+        url = "/"
+      [[languages.en.menu.main]]
+        identifier = "posts"
+        name = "Posts"
+        url = "/posts"
+      [[languages.en.menu.main]]
         identifier = "about"
         name = "About"
         url = "/about"
       [[languages.en.menu.main]]
-        identifier = "Github"
+        identifier = "tags"
+        name = "Tags"
+        url = "/tags"
+        [[languages.en.menu.main]]
+        identifier = "github"
         name = "Github"
         url = "https://github.com/hoshiya4522"
-
+        [[languages.en.menu.main]]
+        identifier = "youtube"
+        name = "YouTube"
+        url = "https://www.youtube.com/@hoshiya4522"

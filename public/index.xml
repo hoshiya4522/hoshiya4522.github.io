@@ -1,12 +1,206 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Terminal</title>
+    <title>hoshiya4522&#39;s blog</title>
     <link>/</link>
-    <description>Recent content on Terminal</description>
+    <description>Recent content on hoshiya4522&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Apr 2023 00:35:55 +0600</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Apr 2023 15:16:13 +0600</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Under The Hood: Swaping Two Variables Without A Third Variable</title>
+      <link>/posts/under_the_hood/swaping_two_variables_without-a_third_variable__uth/</link>
+      <pubDate>Mon, 10 Apr 2023 15:16:13 +0600</pubDate>
+      
+      <guid>/posts/under_the_hood/swaping_two_variables_without-a_third_variable__uth/</guid>
+      <description>Today when I was doom scrolling on YouTube I came accross this video by The Primagen talking about the biggest takes on programming. There was a part where writing a program about swapping the values of two variables without a temporary variable was mentioned. I thought how it was done in C. After a quick googling I came accross this article and the code was kinda interesting.
+I&amp;rsquo;m currently learning and using C because of school.</description>
+      <content>&lt;p&gt;Today when I was doom scrolling on YouTube I came accross &lt;a href=&#34;https://www.youtube.com/watch?v=Nusg5dUjR0A&#34;&gt;this&lt;/a&gt; video by The Primagen talking about the biggest takes on programming. There was a part where writing a program about swapping the values of two variables without a temporary variable was mentioned. I thought how it was done in C. After a quick googling I came accross &lt;a href=&#34;https://www.javatpoint.com/c-program-to-swap-two-numbers-without-using-third-variable&#34;&gt;this article&lt;/a&gt; and the code was kinda interesting.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m currently learning and using C because of school. But before that I used Python for most of my projects.
+In python to swap the value of two variables without a third variable I use the following snippet.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
+y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;
+
+x, y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; y, x
+
+print(x) &lt;span style=&#34;color:#75715e&#34;&gt;# 5&lt;/span&gt;
+print(y) &lt;span style=&#34;color:#75715e&#34;&gt;# 3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I used the exact statement &lt;code&gt;x, y = y, x;&lt;/code&gt; in C but after compilation when I ran the code the output wasn&amp;rsquo;t the same. The content of the variables didn&amp;rsquo;t swap! But why?&lt;/p&gt;
+&lt;h2 id=&#34;tuple-unpacking-in-python&#34;&gt;Tuple Unpacking in Python&lt;/h2&gt;
+&lt;p&gt;To assign multiple values into a single variable in Python we can use Lists, Dictionaries or Tuples.
+But the values which are stored in a tuple are unchangeable.&lt;/p&gt;
+&lt;p&gt;Tuples are assigned like this.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;t &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;By using the feature implemented in Python called tuple unpacking we can assign multiple variables buy splitting a tuple.&lt;/p&gt;
+&lt;p&gt;For example, suppose we have a tuple of two numbers. Now we will assign the first number to the variable x and the second number to the variable y.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;x, y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here the tuple &lt;code&gt;(1, 2)&lt;/code&gt; is split in half and then one is a signed to x and 2 is assigned to y. normally to do this we would write two lines of code. But by using this feature we can do all that in a single line of code.&lt;/p&gt;
+&lt;p&gt;A tuple can also contain variables.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;var1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;
+var2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;
+
+t &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (var1, var2)
+
+print(t)  &lt;span style=&#34;color:#75715e&#34;&gt;# (6, 9)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here Python first gets the actual value of the variables var1 and var2 and then assigning to the variable t.&lt;/p&gt;
+&lt;p&gt;So in the snippet &lt;code&gt;x, y = y, x&lt;/code&gt; Python is first getting the value of &lt;code&gt;y, x&lt;/code&gt; and then using tuple unpacking it assigns the value of x and y.
+the process is indeed very beautiful.&lt;/p&gt;
+&lt;p&gt;But, the feature doesn&amp;rsquo;t exist in C. That is why it doesn&amp;rsquo;t work there.&lt;/p&gt;
+&lt;h2 id=&#34;swapping-the-contents-of-two-variables-in-c&#34;&gt;Swapping The Contents of Two Variables in C&lt;/h2&gt;
+&lt;p&gt;We will be discussing three methods on how we can swap the contents of two variables without assigning a temporary third variable in C.&lt;/p&gt;
+&lt;h3 id=&#34;the-arithmetic-method&#34;&gt;The Arithmetic Method&lt;/h3&gt;
+&lt;p&gt;Suppose we have two variables x and y. Where x is assigned with the number 2 and why is assigned with the number 5.&lt;/p&gt;
+&lt;p&gt;Now if we add x and y we will get 7 (&lt;code&gt;5 + 2 = 7&lt;/code&gt;) and then assign it to x.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// x=7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now if we subtract y from x we will get the previous value of x (&lt;code&gt;7 - 2 = 5&lt;/code&gt;). Now by assigning it to y the previous value of x will now be assigned to y.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// x=7
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// y=2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Finally, by subtracting the new value of y from the new value of x we will get the original value of x (&lt;code&gt;7 - 5 = 2&lt;/code&gt;) and by assigning it to the variable y the swapping process will be completed.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// x=7
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// y=2
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// x=5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(){
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;;
+
+    x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// x=7
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// y=2
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// x=5
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;the-xor-method&#34;&gt;The XOR(&lt;code&gt;^&lt;/code&gt;) Method&lt;/h3&gt;
+&lt;p&gt;XOR(exclusive or) is a bitwise operator that takes to binary bits and compares them. If the two bits match then it returns 0. but if the bits are different IT returns 1.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;A&lt;/th&gt;
+&lt;th&gt;B&lt;/th&gt;
+&lt;th&gt;A XOR B&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Suppose we have two variables x and y. Where x is assigned with the number 2 and why is assigned with the number 5.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here 2 and 5 are decimal numbers.
+The binary form of 2 is &lt;code&gt;00000010&lt;/code&gt; and 5 in binary form is &lt;code&gt;00000101&lt;/code&gt;.
+If we do the XOR operation on the variable x and y the result will be &lt;code&gt;00000111&lt;/code&gt; or 7 in decimal.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Explanation:
+
+    00000010     (x)
+(^) 00000101     (y)
+--------------
+    00000111
+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now if we assign the value of x XOR y to x then x&amp;rsquo;s new value will be 7.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// x = 7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then if we do the XOR operation between y and the new value of x and store it into y then the number which was previously assigned to x will now be assigned to y.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Explanation:
+
+    00000111     (new x)
+(^) 00000101     (y)
+--------------
+    00000010     (Previous value of x)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// x=7
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// y=2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Finally if we do the XOR operation again between the new values of both x and y and then assigning the result to x. The old value of y will now be assigned to x and thus the swapping operation will be completed.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Explanation:
+
+    00000111     (new x)
+(^) 00000010     (new y)
+--------------
+    00000101     (Previous value of y)
+&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// x=7
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// y=2
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// x=5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;To sum it up the c implementation of the XOR method will be:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(){
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;;
+
+    x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// x=7
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// y=2
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt; y   &lt;span style=&#34;color:#75715e&#34;&gt;// x=5
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;comparing-both-methods&#34;&gt;Comparing both methods&lt;/h3&gt;
+&lt;p&gt;Both of these methods are very beautiful!&lt;/p&gt;
+&lt;p&gt;Although the arithmetic method is more readable and easier to understand it is actually slower.&lt;/p&gt;
+&lt;p&gt;In the Arithmetic Method three arithmetic operations are done to finish the process.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; y
+y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; y
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; y
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;On the other hand, in the XOR method three bitwise operations are done to finish the process.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt; y
+y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt; y
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt; y
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Bitwise operations work on the binary form of the values thus the operation is done at a lower level than an arithmetic operations.&lt;/p&gt;
+&lt;p&gt;That is the reason the XOR method is faster and more efficient than the Arithmetic method.&lt;/p&gt;
+&lt;h2 id=&#34;some-thoughts&#34;&gt;Some Thoughts&lt;/h2&gt;
+&lt;p&gt;Swapping the value of two variables without assigning a temporary third variable is a very simple task that we do pretty often. I used to do it without really understanding what&amp;rsquo;s really happening under the hood.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m a 17 y/o boy who thought that he knew python pretty well but after doing the research for this blog post now I know that my current knowledge is basically at the surface level. But I can say that I have more knowledge than I had yesterday.&lt;/p&gt;
+&lt;p&gt;The reason for me making a blog is to learn more about stuff I already kind of know it or want to master it. Because, I try not to post something that is wrong or false.&lt;/p&gt;
+&lt;p&gt;As Richard Fynman once said,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;If you want to master something, teach it.
+The more you teach, the better you learn.
+Teaching is a powerful tool to learning.&amp;quot;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>First Post: Enjoy 5 Paragraphs of Sagan Ipsum</title>
+      <link>/posts/first-post__enjoy_5_paragraphs_of_sagan_ipsum_with_a_meme/</link>
+      <pubDate>Mon, 10 Apr 2023 01:36:50 +0600</pubDate>
+      
+      <guid>/posts/first-post__enjoy_5_paragraphs_of_sagan_ipsum_with_a_meme/</guid>
+      <description>Venture are creatures of the cosmos billions upon billions Apollonius of Perga radio telescope galaxies. Emerged into consciousness the sky calls to us descended from astronomers rich in heavy atoms Flatland take root and flourish. The only home we&amp;rsquo;ve ever known with pretty stories for which there&amp;rsquo;s little good evidence stirred by starlight Sea of Tranquility Orion&amp;rsquo;s sword with pretty stories for which there&amp;rsquo;s little good evidence. Vastness is bearable only through love muse about the only home we&amp;rsquo;ve ever known another world inconspicuous motes of rock and gas the ash of stellar alchemy.</description>
+      <content>&lt;p&gt;Venture are creatures of the cosmos billions upon billions Apollonius of Perga radio telescope galaxies. Emerged into consciousness the sky calls to us descended from astronomers rich in heavy atoms Flatland take root and flourish. The only home we&amp;rsquo;ve ever known with pretty stories for which there&amp;rsquo;s little good evidence stirred by starlight Sea of Tranquility Orion&amp;rsquo;s sword with pretty stories for which there&amp;rsquo;s little good evidence. Vastness is bearable only through love muse about the only home we&amp;rsquo;ve ever known another world inconspicuous motes of rock and gas the ash of stellar alchemy.&lt;/p&gt;
+&lt;p&gt;Prime number are creatures of the cosmos circumnavigated star stuff harvesting star light tendrils of gossamer clouds Tunguska event? With pretty stories for which there&amp;rsquo;s little good evidence billions upon billions with pretty stories for which there&amp;rsquo;s little good evidence stirred by starlight laws of physics brain is the seed of intelligence. A very small stage in a vast cosmic arena emerged into consciousness invent the universe Jean-François Champollion citizens of distant epochs the sky calls to us?&lt;/p&gt;
+&lt;p&gt;Culture inconspicuous motes of rock and gas decipherment tesseract Cambrian explosion muse about. From which we spring two ghostly white figures in coveralls and helmets are softly dancing radio telescope dispassionate extraterrestrial observer a very small stage in a vast cosmic arena white dwarf. Cosmic ocean emerged into consciousness made in the interiors of collapsing stars the carbon in our apple pies across the centuries rich in heavy atoms.&lt;/p&gt;
+&lt;p&gt;A very small stage in a vast cosmic arena brain is the seed of intelligence Sea of Tranquility gathered by gravity descended from astronomers muse about? Something incredible is waiting to be known a mote of dust suspended in a sunbeam take root and flourish white dwarf with pretty stories for which there&amp;rsquo;s little good evidence the carbon in our apple pies? Invent the universe hearts of the stars a mote of dust suspended in a sunbeam invent the universe kindling the energy hidden in matter from which we spring.&lt;/p&gt;
+&lt;p&gt;Billions upon billions the ash of stellar alchemy Rig Veda invent the universe laws of physics cosmic fugue. Extraplanetary rich in heavy atoms star stuff harvesting star light vanquish the impossible dream of the mind&amp;rsquo;s eye the carbon in our apple pies? Star stuff harvesting star light courage of our questions dispassionate extraterrestrial observer permanence of the stars are creatures of the cosmos are creatures of the cosmos and billions upon billions upon billions upon billions upon billions upon billions upon billions.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/update_notes_2x.png&#34; alt=&#34;XKCD 2010&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Sources:&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This text was generated by &lt;a href=&#34;https://saganipsum.com&#34;&gt;Sagan Ipsum&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The meme was downloaded from &lt;a href=&#34;https://xkcd.com/2010/&#34;&gt;xkcd&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </item>
+    
     <item>
       <title>About</title>
       <link>/about/</link>
