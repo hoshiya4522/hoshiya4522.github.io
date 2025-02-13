@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Warmup Dot</title>
+    <style>
+        body {
+            background-color: #121212; /* Dark background for reduced eye strain */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .dot-container {
+            position: relative;
+        }
+        .dot {
+            width: 20px;
+            height: 20px;
+            background-color: #f0f0f0; /* Light grayish white dot */
+            border-radius: 50%;
+        }
+        .timer {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            display: none;
+        }
+        .dot-container:hover .timer {
+            display: block;
+        }
+    </style>
+    <script>
+        let timeLeft = 240; // 4 minutes in seconds
+        function startTimer() {
+            const timerElement = document.getElementById("timer");
+            setInterval(() => {
+                if (timeLeft > 0) {
+                    let minutes = Math.floor(timeLeft / 60);
+                    let seconds = timeLeft % 60;
+                    timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                    timeLeft--;
+                }
+            }, 1000);
+        }
+        window.onload = startTimer;
+    </script>
+</head>
+<body>
+    <div class="dot-container">
+        <div class="dot"></div>
+        <div id="timer" class="timer">4:00</div>
+    </div>
+</body>
+</html>
